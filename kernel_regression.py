@@ -301,7 +301,7 @@ class Data(object):
         else:
             return (self.__target[:, idy] - mu[idy]) / sigma[idy]
                 
-class KrDataSet(object):
+class KRDataSet(object):
     def __init__(self, inputData, targetData, distribution=(60, 20, 20), \
                  nameStrings=('feature', 'validate', 'test')):        
         self.__nameStrings = nameStrings
@@ -458,9 +458,9 @@ class KrDataSet(object):
     
     def saveDataset(self, filename):
         saveData(self, filename)
-        print('Datase is saved to ' + filename)
+        print('Dataset is saved to ' + filename)
     
-class KRModell(object):
+class KRModel(object):
     def __init__(self, krData=[], options={'multiH':False, 'scaleKernel':True, \
                  'kernel':'gaussian', 'powerList':[1]}):
         self.__krData = krData
@@ -471,8 +471,8 @@ class KRModell(object):
         
         self.__options.update(options)
         
-    def setData(self, data):
-        self.__krData = data
+    def setData(self, krData):
+        self.__krData = krData
         
     def setOptions(self, options):
         self.__h = []
@@ -492,7 +492,7 @@ class KRModell(object):
     def r2(self):
         return self.__r2
     
-    def learnModell(self, options = {}):
+    def learnModel(self, options = {}):
         h = []
         
         self.__options.update(options)
@@ -577,9 +577,9 @@ class KRModell(object):
         else:
             return y * normData[3][i_target] + normData[2][i_target]
 
-    def saveModell(self, filename):
+    def saveModel(self, filename):
         saveData(self, filename)
-        print('KRModell is saved to ' + filename)
+        print('KRModel is saved to ' + filename)
         
     def loadDataset(self, filename):
         self.__h = []
