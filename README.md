@@ -89,4 +89,24 @@ model.learnModel(options = {'multiH':True, 'scaleKernel':False, 'kernel':'cauchy
 ```
 
 #### Estimate values
-To estimate values from the model some informations are needed. The main information are the points, where the model estimate the function. The point matrix have to be configurate like the input vector. 
+To estimate values from the model some informations are needed. The main information are the points, where the model estimate the function. The point matrix have to be configurate like the input vector. To handle normalized and unnormalized data set the options ```normalInput=False``` and ```normalOutput=False```. To choose the targets use the option ```i_target = 'all'```. Valdi values for ```i_target``` are:
+* 'all': means all target will be estimated
+* number: means this target only, e.g: [1]
+* list: means all listed target only. e.g: [2,3]
+
+```python
+estimatedTarget = model.estimateFunction(x = points, normalInput = False, normalOutput = True, i_target = 'all')
+```
+
+#### Validate model
+Currently is one value and one graphical based method implemanted to validate the model. The method ```.goodnessOfFit``` calculates the goodness of fit based on the test subset. The option ```i_target = 'all'``` (equal as by the method ```.estimateFunction```) can be used to set the interesting targets. If more than one target is choosed, the returned goodness of fit represents the value ofer all choosed data.
+
+```python
+r2 = modell.goodnessOfFit(i_target = 1)
+```
+
+The graphical method ```.plotRegression``` provides the option to plot the relation between the true and the estimated data. Also the gooddness of fit will be shown in the titel. As option the diffrent subsets ```dataset = 'all'``` and targets ```i_target = 'all'``` (equal as by the method ```.estimateFunction```) can be choose.
+
+```python
+modell.potRegression(dataset = [2,3], i_target = 2)
+```
