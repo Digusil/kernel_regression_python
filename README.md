@@ -89,4 +89,4 @@ model.learnModel(options = {'multiH':True, 'scaleKernel':False, 'kernel':'cauchy
 ```
 
 #### Estimate values
-To estimate values from the model some informations are needed. The main information are the points, where the model estimate the function. The point matrix have to be configurate like the input vector.
+To estimate values from the model some informations are needed. The main information are the points, where the model estimate the function. The point matrix have to be configurate like the input vector. 
